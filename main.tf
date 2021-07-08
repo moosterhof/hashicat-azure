@@ -135,7 +135,8 @@ resource "azurerm_virtual_machine" "catapp" {
     disable_password_authentication = false
   }
 
-  tags = { Department = "devops" }
+  tags = { Department = "devops",
+           Billable = true, }
 
 
   # Added to allow destroy to work correctly.
