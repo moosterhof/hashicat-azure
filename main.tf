@@ -176,18 +176,6 @@ resource "null_resource" "configure-cat-app" {
     }
   }
   
-  provisioner "file" {
-    source      = "playbook.yml"
-    destination = "/home/${var.admin_username}/"
-
-    connection {
-      type     = "ssh"
-      user     = var.admin_username
-      password = var.admin_password
-      host     = azurerm_public_ip.catapp-pip.fqdn
-    }
-  }
-
   provisioner "remote-exec" {
     inline = [
       "sudo apt -q -y update",
