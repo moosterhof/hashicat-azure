@@ -160,12 +160,6 @@ resource "null_resource" "configure-cat-app" {
     azurerm_virtual_machine.catapp,
   ]
 
-  # Terraform 0.11
-  # triggers {
-  #   build_number = "${timestamp()}"
-  # }
-
-  # Terraform 0.12
   triggers = {
     build_number = timestamp()
   }
@@ -200,6 +194,7 @@ resource "null_resource" "configure-cat-app" {
       "sleep 15",
       "sudo apt -q -y update",
       "sudo apt -q -y install ansible",
+      "find /home/${var.admin_username}/",
       "sudo ansible-playbook -c local -i \"localhost,\" /home/${var.admin_username}/playbook.yml",
     ]
     
