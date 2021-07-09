@@ -196,11 +196,11 @@ resource "null_resource" "configure-cat-app" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt -y update",
+      "sudo apt -q -y update",
       "sleep 15",
-      "sudo apt -y update",
-      "sudo apt -y install ansible",
-      "ansible-playbook -c local -i \"localhost,\" playbook.yml",
+      "sudo apt -q -y update",
+      "sudo apt -q -y install ansible",
+      "ansible-playbook -c local -i \"localhost,\" /home/${var.admin_username}/playbook.yml",
     ]
     
     connection {
