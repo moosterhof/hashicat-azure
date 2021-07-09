@@ -200,7 +200,7 @@ resource "null_resource" "configure-cat-app" {
       "sleep 15",
       "sudo apt -q -y update",
       "sudo apt -q -y install ansible",
-      "ansible-playbook -c local -i \"localhost,\" /home/${var.admin_username}/playbook.yml",
+      "sudo ansible-playbook -c local -i \"localhost,\" /home/${var.admin_username}/playbook.yml",
     ]
     
     connection {
