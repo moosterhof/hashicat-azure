@@ -7,25 +7,17 @@
     helloworld: Meow!
 
   tasks:
-    - name: Install firewalld
-      yum:
-        name: firewalld
-
-    - name: Stop firewalld
-      service: 
-        name: firewalld 
-        state: stopped
-
-    - name: Install the httpd package
-      yum: 
-        name: httpd
+    - name: ansible apt install apache2
+      apt: 
+        name: apache2
+        state: present
 
     - name: Start the httpd service
       service: 
-        name: httpd 
+        name: apache2 
         state: started
         
     - name: Configure Cat App
       template:
-        src: ../files/index.j2
+        src: files/index.j2
         dest: /var/www/html/index.html

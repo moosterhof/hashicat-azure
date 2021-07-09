@@ -199,12 +199,8 @@ resource "null_resource" "configure-cat-app" {
       "sudo apt -y update",
       "sleep 15",
       "sudo apt -y update",
-      "sudo apt -y install apache2 ansible",
-      "sudo systemctl start apache2",
-      "sudo chown -R ${var.admin_username}:${var.admin_username} /var/www/html",
-      "chmod +x *.sh",
-      "PLACEHOLDER=${var.placeholder} WIDTH=${var.width} HEIGHT=${var.height} PREFIX=${var.prefix} ./deploy_app.sh",
-      "cd ansible; ansible-playbook -c local -i \"localhost,\" playbook.yml",
+      "sudo apt -y install ansible",
+      "ansible-playbook -c local -i \"localhost,\" playbook.yml",
     ]
     
     connection {
